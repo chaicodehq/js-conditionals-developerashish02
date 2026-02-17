@@ -24,4 +24,38 @@
  */
 export function getTicketPrice(age, isWeekend) {
   // Your code here
+
+  const weekendSurcharge = 3;
+  const priceForChildren = 8;
+  const priceForTeens = 12;
+  const priceForAdults = 15;
+  const priceForSeniors = 10;
+
+  let price;
+
+  if (age < 0 || typeof age != "number" || isNaN(age)) {
+    return -1;
+  }
+
+  if (age <= 12) {
+    price = priceForChildren;
+  }
+
+  else if (age <= 17) {
+    price = priceForTeens;
+  }
+
+  else if (age <= 59) {
+    price = priceForAdults;
+  }
+
+  else {
+    price = priceForSeniors;
+  }
+
+  if (isWeekend) {
+    price = price + weekendSurcharge;
+  }
+
+  return price;
 }
